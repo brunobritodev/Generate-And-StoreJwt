@@ -50,7 +50,7 @@ namespace JwtExamples
         private static SecurityKey Loadkey()
         {
             if (File.Exists(MyJwkLocation))
-                JsonSerializer.Deserialize<JsonWebKey>(File.ReadAllText(MyJwkLocation));
+                return JsonSerializer.Deserialize<JsonWebKey>(File.ReadAllText(MyJwkLocation));
 
             var newKey = CreateJWK();
             File.WriteAllText(MyJwkLocation, JsonSerializer.Serialize(newKey));
